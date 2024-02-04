@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script type="text/javascript" src="item\window_item_form.js"></script>
   <title>Estimate Form</title>
   <style>
     .small-input {
@@ -12,32 +13,12 @@
       width: 40px; /* Set your desired width */
     }
   </style>
-  </style>
 </head>
 <body>
   <h1>Estimate Form</h1>
   <form id="estimateForm">
-    <!-- item form for categorize: window-->
-    <label for="item">品名</label>
-    <input type="text" id="windowItem" required>
-    <label for="pattern">規格</label>
-    <input type="number" id="windowLength" class="small-input" required>
-    <label>x</label>
-    <input type="number" id="windowWidth" class="small-input" required>
-    <label for="quantity">數量</label>
-    <input type="number" id="windowQuantity" class="small-input" required>
-    <label for="unit">單位</label>
-    <select id="unit" class="one-word-input" required>
-      <option value="ft3">才</option>
-      <option value="ft2">坪</option>
-      <option value="m">米</option>
-      <option value="p">式</option>
-    </select>
-    <label for="unitPrice">單價</label>
-    <input type="number" id="windowUnitPrice" class="small-input" required>
-    <button type="button" onclick="addItem()">新增</button>
-    <br>
-    
+
+    <div id="windowItemFormContainer"></div>
     <!--item form for categorize: unknown-->
     <label for="item">Item:</label>
     <input type="text" id="item" required>
@@ -59,20 +40,16 @@
   </form>
 
   <script>
+    const windowItemFormContainer = document.getElementById('windowItemFormContainer');
+    fetch('item/window_item_form.html')
+    .then(response => response.text())
+    .then(html => {
+      windowItemFormContainer.innerHTML = html.trim();
+      console.log(html.trim());
+    })
+    .catch(error => console.error('Error loading window_item_form.html:', error));
     let items = [];
 
-    function addItem() {
-      const item = document.getElementById('item').value;
-      const quantity = parseFloat(document.getElementById('quantity').value);
-      const price = parseFloat(document.getElementById('price').value);
-
-      const total = quantity * price;
-
-      items.push({ item, quantity, price, total });
-
-      updateItemList();
-      updateTotal();
-    }
     function removeItem(index) {
       items.splice(index, 1);
       updateItemList();
