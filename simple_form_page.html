@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script type="text/javascript" src="item\window_item_form.js"></script>
+  <script type="text/javascript" src="item_table.js"></script>
   <title>Estimate Form</title>
   <style>
     .small-input {
@@ -20,7 +21,7 @@
 
     <div id="windowItemFormContainer"></div>
     <div id="unknownItemFormContainer"></div>
-
+    <div id="itemTableContainer"></div>
     <ul id="itemList"></ul>
 
     <label for="total">Total:</label>
@@ -35,7 +36,6 @@
     .then(response => response.text())
     .then(html => {
       windowItemFormContainer.innerHTML = html.trim();
-      console.log(html.trim());
     })
     .catch(error => console.error('Error loading window_item_form.html:', error));
 
@@ -44,34 +44,20 @@
     .then(response => response.text())
     .then(html => {
       unknownItemFormContainer.innerHTML = html.trim();
-      console.log(html.trim());
     })
     .catch(error => console.error('Error loading unknown_item_form.html:', error));
-    
+
+    const itemTableContainer = document.getElementById('itemTableContainer');
+    fetch('item_table.html')
+    .then(response => response.text())
+    .then(html => {
+      itemTableContainer.innerHTML = html.trim();
+      console.log( html.trim());
+    })
+    .catch(error => console.error('Error loading item_table.html:', error));
+
     let items = [];
-
-    function removeItem(index) {
-      items.splice(index, 1);
-      updateItemList();
-      updateTotal();
-    }
-
-    function updateItemList() {
-      const itemList = document.getElementById('itemList');
-      itemList.innerHTML = '';
-
-      items.forEach((item, index) => {
-        const li = document.createElement('li');
-        li.textContent = `${item.quantity} ${item.item}(s) - $${item.price.toFixed(2)} each - Total: $${item.total.toFixed(2)}`;
-
-        const removeButton = document.createElement('button');
-        removeButton.textContent = 'Remove';
-        removeButton.addEventListener('click', () => removeItem(index));
-
-        li.appendChild(removeButton);
-        itemList.appendChild(li);
-      });
-    }
+    
     function updateTotal() {
       const totalInput = document.getElementById('total');
       const total = items.reduce((acc, item) => acc + item.total, 0);
