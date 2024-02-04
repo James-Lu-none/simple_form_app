@@ -58,18 +58,28 @@
       updateItemList();
       updateTotal();
     }
+    function removeItem(index) {
+      items.splice(index, 1);
+      updateItemList();
+      updateTotal();
+    }
 
     function updateItemList() {
       const itemList = document.getElementById('itemList');
       itemList.innerHTML = '';
 
-      items.forEach((item) => {
+      items.forEach((item, index) => {
         const li = document.createElement('li');
         li.textContent = `${item.quantity} ${item.item}(s) - $${item.price.toFixed(2)} each - Total: $${item.total.toFixed(2)}`;
+
+        const removeButton = document.createElement('button');
+        removeButton.textContent = 'Remove';
+        removeButton.addEventListener('click', () => removeItem(index));
+
+        li.appendChild(removeButton);
         itemList.appendChild(li);
       });
     }
-
     function updateTotal() {
       const totalInput = document.getElementById('total');
       const total = items.reduce((acc, item) => acc + item.total, 0);
