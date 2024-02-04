@@ -1,13 +1,13 @@
 
 function addItem() {
-    const item = document.getElementById('windowItem').value;
+    const item = document.getElementById('item').value;
     const pattern = '';
-    const quantity = document.getElementById('windowQuantity').value;
+    const quantity = document.getElementById('quantity').value;
     
-    const unitPrice = document.getElementById('windowItem').value;
-    const unit = document.getElementById('windowItem').value;
+    const unitPrice = document.getElementById('unitPrice').value;
+    const unit = document.getElementById('unit').value;
     
-    const total = quantity * price;
+    const total = quantity * unitPrice;
     items.push({ item, pattern,quantity, unitPrice, unit, total});
 
     updateItemList();
