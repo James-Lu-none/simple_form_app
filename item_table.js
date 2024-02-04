@@ -14,12 +14,12 @@ function updateItemList() {
         const cell5 = row.insertCell(5);
 
         cell0.textContent = item.item;
-        cell1.textContent = item.quantity;
-        cell2.textContent = item.price;
+        cell1.textContent = item.pattern;
+        cell2.textContent = item.quantity;
         const span1 = document.createElement('span');
-        span1.textContent = item.column1;
+        span1.textContent = item.unitPrice;
         const span2 = document.createElement('span');
-        span2.textContent = item.column2;
+        span2.textContent = item.unit;
         divInCell3.appendChild(span1);
         divInCell3.appendChild(span2);
 
