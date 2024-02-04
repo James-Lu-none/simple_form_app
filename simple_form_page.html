@@ -11,6 +11,19 @@
 <body>
   <h1>Estimate Form</h1>
   <form id="estimateForm">
+    <!--item form for categorize: window-->
+    <label for="item">Item:</label>
+    <input type="text" id="item" required>
+
+    <label for="quantity">Quantity:</label>
+    <input type="number" id="quantity" required>
+
+    <label for="price">Price per unit:</label>
+    <input type="number" id="price" required>
+
+    <button type="button" onclick="addItem()">Add Item</button>
+
+    <!--item form for categorize: unknown-->
     <label for="item">Item:</label>
     <input type="text" id="item" required>
 
