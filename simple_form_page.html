@@ -52,7 +52,6 @@
     .then(response => response.text())
     .then(html => {
       itemTableContainer.innerHTML = html.trim();
-      console.log( html.trim());
     })
     .catch(error => console.error('Error loading item_table.html:', error));
 
