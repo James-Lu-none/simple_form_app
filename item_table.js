@@ -16,6 +16,9 @@ function updateItemList() {
         cell0.textContent = item.item;
         cell1.textContent = item.pattern;
         cell2.textContent = item.quantity;
+        
+        const divInCell3 = document.createElement('div');
+        divInCell3.style.display = 'flex';
         const span1 = document.createElement('span');
         span1.textContent = item.unitPrice;
         const span2 = document.createElement('span');
