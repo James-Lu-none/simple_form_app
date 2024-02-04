@@ -19,17 +19,7 @@
   <form id="estimateForm">
 
     <div id="windowItemFormContainer"></div>
-    <!--item form for categorize: unknown-->
-    <label for="item">Item:</label>
-    <input type="text" id="item" required>
-
-    <label for="quantity">Quantity:</label>
-    <input type="number" id="quantity" required>
-
-    <label for="price">Price per unit:</label>
-    <input type="number" id="price" required>
-
-    <button type="button" onclick="addItem()">Add Item</button>
+    <div id="unknownItemFormContainer"></div>
 
     <ul id="itemList"></ul>
 
@@ -48,6 +38,16 @@
       console.log(html.trim());
     })
     .catch(error => console.error('Error loading window_item_form.html:', error));
+
+    const unknownItemFormContainer = document.getElementById('unknownItemFormContainer');
+    fetch('item/unknown_item_form.html')
+    .then(response => response.text())
+    .then(html => {
+      unknownItemFormContainer.innerHTML = html.trim();
+      console.log(html.trim());
+    })
+    .catch(error => console.error('Error loading unknown_item_form.html:', error));
+    
     let items = [];
 
     function removeItem(index) {
