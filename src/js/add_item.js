@@ -1,4 +1,4 @@
-
+let items = [];
 function addItem() {
     const item = document.getElementById('item').value;
     const pattern = '';
@@ -9,7 +9,7 @@ function addItem() {
     
     const total = quantity * unitPrice;
     items.push({ item, pattern,quantity, unitPrice, unit, total});
-
+    
     updateItemList();
     updateTotal();
 }

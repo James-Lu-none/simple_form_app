@@ -1,14 +1,17 @@
-<link rel="stylesheet" href="css/table.css">
-<table id="itemTable">
-<thead>
-    <tr draggable="true">
-    <th>品名</th>
-    <th>規格</th>
-    <th>數量</th>
-    <th>單價</th>
-    <th>金額</th>
-    <th>刪除</th>
-    </tr>
-</thead>
-<tbody id="itemList"></tbody>
+<table id="itemTable" class="draggable-table">
+    <thead>
+        <tr>
+        <th>品名</th>
+        <th>規格</th>
+        <th>數量</th>
+        <th>單價</th>
+        <th>金額</th>
+        <th>刪除</th>
+        </tr>
+    </thead>
+    <tbody id="itemList"></tbody>
+    <tfoot>
+        <label for="total">Total:</label>
+        <input type="text" id="total" readonly>
+    </tfoot>
 </table>

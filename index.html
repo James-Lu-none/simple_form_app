@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script type="text/javascript" src="item\window_item_form.js"></script>
-  <script type="text/javascript" src="item_table.js"></script>
+  <link rel="stylesheet" href="./src/css/style.css">
   <title>Estimate Form</title>
   <style>
     .small-input {
@@ -26,63 +25,13 @@
   <div class="outlined-box" id="unknownItemFormContainer"></div><br/>
   <div id="itemTableContainer"></div><br/>
 
-  <label for="total">Total:</label>
-  <input type="text" id="total" readonly>
-
   <button type="button" onclick="generatePDF()">Generate PDF</button>
   
-
-  <script>
-    const windowItemFormContainer = document.getElementById('windowItemFormContainer');
-    fetch('item/window_item_form.html')
-    .then(response => response.text())
-    .then(html => {
-      windowItemFormContainer.innerHTML = html.trim();
-    })
-    .catch(error => console.error('Error loading window_item_form.html:', error));
-
-    const unknownItemFormContainer = document.getElementById('unknownItemFormContainer');
-    fetch('item/unknown_item_form.html')
-    .then(response => response.text())
-    .then(html => {
-      unknownItemFormContainer.innerHTML = html.trim();
-    })
-    .catch(error => console.error('Error loading unknown_item_form.html:', error));
-
-    const itemTableContainer = document.getElementById('itemTableContainer');
-    fetch('item_table.html')
-    .then(response => response.text())
-    .then(html => {
-      itemTableContainer.innerHTML = html.trim();
-    })
-    .catch(error => console.error('Error loading item_table.html:', error));
-
-    let items = [];
-    
-    function updateTotal() {
-      const totalInput = document.getElementById('total');
-      const total = items.reduce((acc, item) => acc + item.total, 0);
-      totalInput.value = `$${total.toFixed(2)}`;
-    }
-
-    function generatePDF() {
-      // Code to send data to the server for PDF generation
-      const data = { items, total: document.getElementById('total').value };
-      console.log(JSON.stringify(data));
-      fetch('/generate-pdf', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      })
-      .then(response => response.json())
-      .then(result => {
-        // Handle the response from the server (e.g., show a link to download the PDF)
-        console.log(result);
-      })
-      .catch(error => console.error('Error:', error));
-    }
-  </script>
+  <script defer src="./src/js/add_item.js"></script>
+  <script defer src="./src/js/fetch_html.js"></script>
+  <script defer src="./src/js/generate_pdf.js"></script>
+  <script defer src="./src/js/item_table.js"></script>
+  <script defer src="./src/js/draggable_table.js"></script>
+  
 </body>
 </html>
