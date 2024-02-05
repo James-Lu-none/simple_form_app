@@ -41,8 +41,8 @@ function updateItemList() {
         cell0.textContent = item.item;
         cell1.textContent = item.pattern;
         cell2.textContent = item.quantity;
-        cell3.textContent = item.unitPrice;
-        cell4.textContent = item.unit;
+        cell3.textContent = item.unit;
+        cell4.textContent = item.unitPrice;
         cell5.textContent = item.total;
     });
 }
