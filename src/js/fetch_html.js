@@ -25,7 +25,8 @@
   .then(response => response.text())
   .then(html => {
     itemTableContainer.innerHTML = html.trim();
-    
+    updateItemList();
+    init();
   })
   .catch(error => console.error('Error loading unknown_item_form.html:', error));
 })();
