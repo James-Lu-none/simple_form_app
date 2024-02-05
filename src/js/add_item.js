@@ -19,7 +19,7 @@ function addWindowItem() {
     const windowWidth = document.getElementById("windowWidth").value;
     const quantity = document.getElementById('quantity').value;
     const unitPrice = document.getElementById('unitPrice').value;
-    // if(!item | !windowLength | !windowWidth | !quantity | !unitPrice) return;
+    if(!item | !windowLength | !windowWidth | !quantity | !unitPrice) return;
     
     const pattern = windowLength + "x" + windowWidth;
     const q = quantity*windowLength*windowWidth/900;
