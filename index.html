@@ -24,12 +24,30 @@
   <h1>Estimate Form</h1>
   <div class="outlined-box" id="windowItemFormContainer"></div><br/>
   <div class="outlined-box" id="unknownItemFormContainer"></div><br/>
-  <div id="itemTableContainer"></div><br/>
+
+  <table id="itemTable" class="draggable-table">
+    <thead>
+        <tr>
+        <th>品名</th>
+        <th>規格</th>
+        <th>數量</th>
+        <th>單價</th>
+        <th>金額</th>
+        <th>刪除</th>
+        </tr>
+    </thead>
+    <tbody id="itemList"></tbody>
+    <tfoot>
+        <label for="total">Total:</label>
+        <input type="text" id="total" readonly>
+    </tfoot>
+  </table>
+
 
   <button type="button" onclick="generatePDF()">Generate PDF</button>
   
+  <script src="./src/js/fetch_html.js"></script>
   <script defer src="./src/js/add_item.js"></script>
-  <script defer src="./src/js/fetch_html.js"></script>
   <script defer src="./src/js/generate_pdf.js"></script>
   <script defer src="./src/js/item_table.js"></script>
   <script defer src="./src/js/draggable_table.js"></script>
