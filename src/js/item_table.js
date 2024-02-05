@@ -22,7 +22,7 @@ function setUnitOptions(element){
 function updateTotal() {
 const totalInput = document.getElementById('total');
 const total = items.reduce((acc, item) => acc + item.total, 0);
-totalInput.value = `$${total.toFixed(2)}`;
+totalInput.textContent = `$${total.toFixed(2)}`;
 }
 function updateItemList() {
     const itemList = document.getElementById('itemList')
