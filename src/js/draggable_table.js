@@ -9,7 +9,8 @@ window.addEventListener('load', function() {
       mouseDownY = 0,         
       mouseX = 0,
       mouseY = 0,      
-      mouseDrag = false;  
+      mouseDrag = false
+      isDeleting = false;  
   
   function init() {
     bindMouse();
@@ -49,7 +50,10 @@ window.addEventListener('load', function() {
       
       currRow.classList.remove('is-dragging');
       table.removeChild(dragElem);
-      
+      if(isDeleting){
+        removeItem(Array.from(tbody.children).indexOf(currRow))
+        isDeleting=false;
+      }
       dragElem = null;
       mouseDrag = false;
     });    
@@ -66,7 +70,15 @@ window.addEventListener('load', function() {
     
   function moveRow(x, y) {
     dragElem.style.transform = "translate3d(" + x + "px, " + y + "px, 0)";
-    
+    if(x>100){
+      dragElem.style.backgroundColor="red";
+      isDeleting = true;
+    }
+    else{
+      dragElem.style.backgroundColor="#f7f7f7"
+      isDeleting = false;
+    }
+
     let	dPos = dragElem.getBoundingClientRect(),
         currStartY = dPos.y, currEndY = currStartY + dPos.height,
         rows = getRows();

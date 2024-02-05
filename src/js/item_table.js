@@ -51,11 +51,12 @@ function swapItem(index1,index2){
     const temp = items[index1];
     items[index1] = items[index2];
     items[index2] = temp;
-    console.log("swap"+ index1 + "," + index2)
+    console.log("swap item: "+ index1 + "," + index2)
 }
 
 function removeItem(index) {
     items.splice(index, 1);
     updateItemList();
     updateTotal();
+    console.log("remove item: "+ index)
 }
