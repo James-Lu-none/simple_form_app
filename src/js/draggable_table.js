@@ -1,7 +1,8 @@
 window.addEventListener('load', function() {
   const table = document.getElementById('itemTable');
-  const tbody = document.getElementById('itemList');
-  
+  const tbody = table.querySelector('tbody');
+  const tfoot = table.querySelector('tfoot');
+
   var currRow = null,
       dragElem = null,
       mouseDownX = 0,
@@ -100,10 +101,13 @@ window.addEventListener('load', function() {
 
     
       let tPos = target.getBoundingClientRect(),
-          dPos = dragElem.getBoundingClientRect();
-      dragElem.style.bottom = ((dPos.y - tPos.y) - tPos.height) + "px";
+          dPos = dragElem.getBoundingClientRect(),
+          fPos = tfoot.getBoundingClientRect();
+      console.log(["before",tPos,dPos]);
+      dragElem.style.bottom = ((dPos.y - tPos.y) - tPos.height + fPos.height) + "px";
       dragElem.style.left = "-1px";    
-    
+      
+      console.log(["after",dragElem.style.bottom,dragElem.style.left]);
       document.dispatchEvent(new MouseEvent('mousemove',
         { view: window, cancelable: true, bubbles: true }
       ));    
