@@ -17,19 +17,19 @@ function addItem() {
 function addWindowItem() {
     const item = document.getElementById('item').value;
     const windowLength = document.getElementById("windowLength").value;
-    const windowWidth =document.getElementById("windowWidth").value;
-    if(item == '' | windowLength == '' | windowWidth == '') return;
-    const pattern = windowLength + "x" + windowWidth; 
+    const windowWidth = document.getElementById("windowWidth").value;
     const quantity = document.getElementById('quantity').value;
-    
-    
     const unitPrice = document.getElementById('unitPrice').value;
-
-    const ft3Value =windowLength*windowWidth/900;
-
-    const unit = unitOptions.get(document.getElementById('windowUnit').value);
+    if(!item | !windowLength | !windowWidth | !quantity | !unitPrice) return;
     
-    const total =  Math.round(quantity * unitPrice * ft3Value);
+    const pattern = windowLength + "x" + windowWidth;
+    const q = quantity*windowLength*windowWidth/900;
+    const unitValue = document.getElementById('windowUnit').value;
+
+    const unitOptions=getUnitOptions();
+    const unit = unitOptions.get(unitValue);
+
+    const total =  Math.round(unitPrice * q);
     items.push({ item, pattern,quantity, unitPrice, unit, total});
 
     updateItemList();

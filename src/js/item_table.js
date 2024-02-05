@@ -1,11 +1,15 @@
 const unitOptions = new Map([
-    [0, '-'],
-    [1, '才'],
-    [2, '坪'],
-    [3, '米'],
-    [4, '式'],
-    [5, '個']
+    ['0', '-'],
+    ['1', '才'],
+    ['2', '坪'],
+    ['3', '米'],
+    ['4', '式'],
+    ['5', '個']
 ]);
+
+function getUnitOptions(){
+    return unitOptions;
+}
 function setUnitOptions(element){
     unitOptions.forEach((value, key) => {
         const optionElement = document.createElement('option');
