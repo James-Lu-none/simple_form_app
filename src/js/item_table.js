@@ -1,4 +1,20 @@
 
+function setUnitOptions(element){
+    const unitOptions = new Map([
+        [0, '-'],
+        [1, '才'],
+        [2, '坪'],
+        [3, '米'],
+        [4, '式'],
+        [5, '個']
+    ]);
+    unitOptions.forEach((value, key) => {
+        const optionElement = document.createElement('option');
+        optionElement.value = key;
+        optionElement.textContent = value;
+        element.appendChild(optionElement);
+    });
+}
 function updateTotal() {
 const totalInput = document.getElementById('total');
 const total = items.reduce((acc, item) => acc + item.total, 0);

@@ -1,5 +1,4 @@
 window.addEventListener('load', function() {
-  
   const table = document.getElementById('itemTable');
   const tbody = document.getElementById('itemList');
   
