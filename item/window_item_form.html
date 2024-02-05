@@ -1,22 +1,24 @@
 <!-- item form for categorize: window-->
-<label for="item">品名</label>
-<input type="text" id="item" required>
-<label>規格</label>
-<input type="number" id="windowLength" class="small-input" required>
-<label>x</label>
-<input type="number" id="windowWidth" class="small-input" required>
-<label for="quantity">數量</label>
-<input type="number" id="quantity" class="small-input" required>
-<label for="unit">單位</label>
-<select id="unit" class="one-word-input" required>
-    <option value="none">-</option>
-    <option value="-ft3">才</option>
-    <option value="-ft2">坪</option>
-    <option value="-m">米</option>
-    <option value="-p">式</option>
-    <option value="-s">個</option>
-</select>
-<label for="unitPrice">單價</label>
-<input type="number" id="unitPrice" class="small-input" required>
-<button type="button" onclick="addWindowItem()">新增</button>
-<br></br>
+<form id="window_item_form">
+    <label for="item">品名</label>
+    <input type="text" id="item" required>
+    <br/>
+    <label>規格</label>
+    <input type="number" id="windowLength" class="small-input" required>
+    <label>x</label>
+    <input type="number" id="windowWidth" class="small-input" required>
+    <label for="quantity">數量</label>
+    <input type="number" id="quantity" class="small-input" required>
+    <label for="unit">單位</label>
+    <select id="unit" class="one-word-input" required>
+        <option value="none">-</option>
+        <option value="-ft3">才</option>
+        <option value="-ft2">坪</option>
+        <option value="-m">米</option>
+        <option value="-p">式</option>
+        <option value="-s">個</option>
+    </select>
+    <label for="unitPrice">單價</label>
+    <input type="number" id="unitPrice" class="small-input" required>
+    <button type="button" onclick="addWindowItem()">新增</button>
+</form>

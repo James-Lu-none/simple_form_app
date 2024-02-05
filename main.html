@@ -14,24 +14,23 @@
       width: 40px; /* Set your desired width */
     }
     .outlined-box {
-      border: 2px solid black; /* Outline color and width */
-      padding: 20px; /* Inner spacing */
+      border: 1px solid black; /* Outline color and width */
+      padding: 10px; /* Inner spacing */
+      border-radius: 2rem;
     }
   </style>
 </head>
 <body>
   <h1>Estimate Form</h1>
-  <form id="estimateForm">
+  <div class="outlined-box" id="windowItemFormContainer"></div><br/>
+  <div class="outlined-box" id="unknownItemFormContainer"></div><br/>
+  <div id="itemTableContainer"></div><br/>
 
-    <div id="windowItemFormContainer"></div>
-    <div id="unknownItemFormContainer"></div>
-    <div id="itemTableContainer"></div>
+  <label for="total">Total:</label>
+  <input type="text" id="total" readonly>
 
-    <label for="total">Total:</label>
-    <input type="text" id="total" readonly>
-
-    <button type="button" onclick="generatePDF()">Generate PDF</button>
-  </form>
+  <button type="button" onclick="generatePDF()">Generate PDF</button>
+  
 
   <script>
     const windowItemFormContainer = document.getElementById('windowItemFormContainer');
