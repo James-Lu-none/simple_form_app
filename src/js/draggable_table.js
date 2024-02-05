@@ -57,11 +57,11 @@ window.addEventListener('load', function() {
   
   
   function swapRow(row, index) {
-     let currIndex = Array.from(tbody.children).indexOf(currRow),
-         row1 = currIndex > index ? currRow : row,
-         row2 = currIndex > index ? row : currRow;
-         
-     tbody.insertBefore(row1, row2);
+    let currIndex = Array.from(tbody.children).indexOf(currRow),
+        row1 = currIndex > index ? currRow : row,
+        row2 = currIndex > index ? row : currRow;
+    swapItem(currIndex,index);
+    tbody.insertBefore(row1, row2);
   }
     
   function moveRow(x, y) {
@@ -103,20 +103,17 @@ window.addEventListener('load', function() {
       let tPos = target.getBoundingClientRect(),
           dPos = dragElem.getBoundingClientRect(),
           fPos = tfoot.getBoundingClientRect();
-      console.log(["before",tPos,dPos]);
+          
       dragElem.style.bottom = ((dPos.y - tPos.y) - tPos.height + fPos.height) + "px";
       dragElem.style.left = "-1px";    
       
-      console.log(["after",dragElem.style.bottom,dragElem.style.left]);
       document.dispatchEvent(new MouseEvent('mousemove',
         { view: window, cancelable: true, bubbles: true }
       ));    
   }  
  
   function getRows() {
-    var a=table.querySelectorAll('tbody tr');
-    console.log(a);
-    return a;
+    return table.querySelectorAll('tbody tr');
   }    
   
   function getTargetRow(target) {

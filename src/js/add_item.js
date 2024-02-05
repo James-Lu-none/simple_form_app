@@ -1,4 +1,3 @@
-let items = [];
 function addItem() {
     const item = document.getElementById('item').value;
     const pattern = '';

@@ -6,6 +6,7 @@ const unitOptions = new Map([
     ['4', '式'],
     ['5', '個']
 ]);
+let items = [];
 
 function getUnitOptions(){
     return unitOptions;
@@ -44,6 +45,13 @@ function updateItemList() {
         cell4.textContent = item.unit;
         cell5.textContent = item.total;
     });
+}
+
+function swapItem(index1,index2){
+    const temp = items[index1];
+    items[index1] = items[index2];
+    items[index2] = temp;
+    console.log("swap"+ index1 + "," + index2)
 }
 
 function removeItem(index) {
