@@ -34,24 +34,25 @@
         <th>單價</th>
         <th>單位</th>
         <th>金額</th>
-        <th>刪除</th>
         </tr>
     </thead>
     <tbody id="itemList"></tbody>
     <tfoot>
       <tr>
-        <td colspan="6"></td>
+        <td colspan="4"></td>
         <td>
           <label for="total">Total:</label>
+        </td>
+        <td>
           <input type="text" id="total" readonly>
         </td>
       </tr>
     </tfoot>
   </table>
 
-  <button id="btn-export"><b>下載</b></button>
-  <button type="button" onclick="generatePDF()">Generate PDF</button>
-  
+  <button id="select-export"><b>選擇模板輸出</b></button>
+  <button id="default-export"><b>預設模板輸出</b></button>
+
   <script src="https://cdn.sheetjs.com/xlsx-0.19.3/package/dist/xlsx.full.min.js"></script>
   <script src="./src/js/fetch_html.js"></script>
   <script defer src="./src/js/add_item.js"></script>

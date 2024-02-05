@@ -36,19 +36,13 @@ function updateItemList() {
         const cell3 = row.insertCell(3);
         const cell4 = row.insertCell(4);
         const cell5 = row.insertCell(5);
-        const cell6 = row.insertCell(6);
-
+        
         cell0.textContent = item.item;
         cell1.textContent = item.pattern;
         cell2.textContent = item.quantity;
         cell3.textContent = item.unitPrice;
         cell4.textContent = item.unit;
-
         cell5.textContent = item.total;
-        const removeButton = document.createElement('button');
-        removeButton.textContent = 'Remove';
-        removeButton.addEventListener('click', () => removeItem(index));
-        cell6.appendChild(removeButton);
     });
 }
 
