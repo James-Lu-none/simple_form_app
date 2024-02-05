@@ -1,13 +1,12 @@
-
+const unitOptions = new Map([
+    [0, '-'],
+    [1, '才'],
+    [2, '坪'],
+    [3, '米'],
+    [4, '式'],
+    [5, '個']
+]);
 function setUnitOptions(element){
-    const unitOptions = new Map([
-        [0, '-'],
-        [1, '才'],
-        [2, '坪'],
-        [3, '米'],
-        [4, '式'],
-        [5, '個']
-    ]);
     unitOptions.forEach((value, key) => {
         const optionElement = document.createElement('option');
         optionElement.value = key;
@@ -33,27 +32,19 @@ function updateItemList() {
         const cell3 = row.insertCell(3);
         const cell4 = row.insertCell(4);
         const cell5 = row.insertCell(5);
+        const cell6 = row.insertCell(6);
 
         cell0.textContent = item.item;
         cell1.textContent = item.pattern;
         cell2.textContent = item.quantity;
-        
-        const divInCell3 = document.createElement('div');
-        divInCell3.style.display = 'flex';
-        const span1 = document.createElement('span');
-        span1.textContent = item.unitPrice;
-        const span2 = document.createElement('span');
-        span2.textContent = item.unit;
-        divInCell3.appendChild(span1);
-        divInCell3.appendChild(span2);
+        cell3.textContent = item.unitPrice;
+        cell4.textContent = item.unit;
 
-        cell3.appendChild(divInCell3);
-
-        cell4.textContent = item.total;
+        cell5.textContent = item.total;
         const removeButton = document.createElement('button');
         removeButton.textContent = 'Remove';
         removeButton.addEventListener('click', () => removeItem(index));
-        cell5.appendChild(removeButton);
+        cell6.appendChild(removeButton);
     });
 }
 

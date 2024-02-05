@@ -6,14 +6,7 @@
     <label for="Quantity">數量</label>
     <input type="number" id="Quantity" class="small-input" required>
     <label for="unit">單位</label>
-    <select id="unit" class="one-word-input" required>
-        <option value="none">-</option>
-        <option value="ft3">才</option>
-        <option value="ft2">坪</option>
-        <option value="m">米</option>
-        <option value="p">式</option>
-        <option value="s">個</option>
-    </select>
+    <select id="unknownUnit" class="one-word-input" required></select>
     <label for="UnitPrice">單價</label>
     <input type="number" id="UnitPrice" class="small-input" required>
     <button type="button" onclick="addItem()">Add Item</button>
