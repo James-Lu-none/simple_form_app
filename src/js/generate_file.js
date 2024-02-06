@@ -3,7 +3,7 @@ document.getElementById('default-export').addEventListener('click', () => {
     const worksheet = XLSX.utils.aoa_to_sheet([]);
     XLSX.utils.book_append_sheet(workbook, worksheet, 'Sheet1');
     insert_table({c: 0, r: 0},worksheet)
-    XLSX.writeFile(workbook, 'modified_template.xlsx');
+    XLSX.writeFile(workbook, 'output.xlsx');
 });
 
 document.getElementById("default-export-word").addEventListener('click',()=>{
