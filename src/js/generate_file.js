@@ -1,3 +1,4 @@
+// import 'mammoth';
 document.getElementById('default-export').addEventListener('click', () => {
     const workbook = XLSX.utils.book_new();
     const worksheet = XLSX.utils.aoa_to_sheet([]);
@@ -27,7 +28,6 @@ document.getElementById("default-export-word").addEventListener('click',()=>{
         };
         // Render the document (replace the placeholders with your data)
         doc.render(data);
-
         // Optionally, you can create a link to download the generated document
         const blob = doc.getZip().generate({
             type: "blob",
@@ -38,6 +38,15 @@ document.getElementById("default-export-word").addEventListener('click',()=>{
             compression: "DEFLATE",
         });
         saveAs(blob, "output.docx");
+        mammoth.extractRawText({ arrayBuffer: content })
+            .then(result => {
+                const htmlContent = result.value;
+                html2pdf().from(htmlContent).outputPdf().then(pdf => {
+                    const blob = new Blob([pdf], { type: 'application/pdf' });
+                    saveAs(blob, "output.pdf");
+                });
+            })
+            .catch(error => console.log(error));
     };
 
     xhr.send();
