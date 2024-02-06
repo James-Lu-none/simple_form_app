@@ -3,8 +3,12 @@ function addItem() {
     const pattern = document.getElementById('u_pattern').value;
     const quantity = document.getElementById('u_quantity').value;
     const unitPrice = document.getElementById('u_unitPrice').value;
-    const unit = document.getElementById('u_unit').value;
+    const unitKey = document.getElementById('u_unit').value;
     if(!item | !quantity | !unitPrice) return;
+
+    const unitOptions=getUnitOptions();
+    const unit = unitOptions.get(unitKey);
+    
     const total = quantity * unitPrice;
     items.push({ item, pattern,quantity, unitPrice, unit, total});
     
@@ -22,10 +26,10 @@ function addWindowItem() {
     
     const pattern = windowLength + "x" + windowWidth;
     const q = quantity*windowLength*windowWidth/900;
-    const unitValue = document.getElementById('windowUnit').value;
+    const unitKey = document.getElementById('windowUnit').value;
 
     const unitOptions=getUnitOptions();
-    const unit = unitOptions.get(unitValue);
+    const unit = unitOptions.get(unitKey);
 
     const total =  Math.round(unitPrice * q);
     items.push({ item, pattern,quantity, unitPrice, unit, total});
