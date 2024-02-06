@@ -21,7 +21,7 @@ document.getElementById("default-export-word").addEventListener('click',()=>{
         // Create a data object with your data
         const data = {
             products: items,
-            quote_total: getTotal(),
+            quoteTotal: getTotal(),
             ...getInfo()
             // Add other data as needed
         };
