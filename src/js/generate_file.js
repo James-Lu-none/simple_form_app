@@ -56,20 +56,18 @@ document.getElementById("default-export-word").addEventListener('click',()=>{
         });
         // Create a data object with your data
         const data = {
-            items: [
-                { name: 'Item 1', quantity: 5, price: 10 },
-                { name: 'Item 2', quantity: 3, price: 8 },
-                // Add more items as needed
+            products: [
+                {item: "A", pattern:"B", quantity:"123", unitPrice:"1", unit:"1",total:"10",description:"hello"},
+                {item: "A", pattern:"B", quantity:"123", unitPrice:"1", unit:"1",total:"10",description:"hello"},
+                {item: "A", pattern:"B", quantity:"123", unitPrice:"1", unit:"1",total:"10",description:"hello"},
+                {item: "A", pattern:"B", quantity:"123", unitPrice:"1", unit:"1",total:"10",description:"hello"},
+                {item: "A", pattern:"B", quantity:"123", unitPrice:"1", unit:"1",total:"10",description:"hello"},{item: "A", pattern:"B", quantity:"123", unitPrice:"1", unit:"1",total:"10",description:"hello"},{item: "A", pattern:"B", quantity:"123", unitPrice:"1", unit:"1",total:"10",description:"hello"}
             ],
+            quote_total:"1000000"
             // Add other data as needed
         };
-
         // Render the document (replace the placeholders with your data)
         doc.render(data);
-
-        // Save the generated document
-        const output = doc.getZip().generate({ type: 'blob' });
-        const blobUrl = URL.createObjectURL(output);
 
         // Optionally, you can create a link to download the generated document
         const blob = doc.getZip().generate({
