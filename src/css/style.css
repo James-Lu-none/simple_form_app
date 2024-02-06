@@ -1,0 +1,15 @@
+.small-input {
+    width: 60px;
+}
+.one-word-input {
+    width: 40px;
+}
+.outlined-box {
+    border: 1px solid black;
+    padding: 10px;
+    border-radius: 1rem;
+}
+.square-outlined-box {
+    border: 1px solid black;
+    padding: 10px;
+}
