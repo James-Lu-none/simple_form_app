@@ -1,16 +1,9 @@
 document.getElementById('default-export').addEventListener('click', () => {
-    fetch('./src/template.xlsx')
-    .then(response => response.arrayBuffer())
-    .then(data => {
-        const workbook = XLSX.read(data, { type: 'array' });
-        const cellRef = {c: 1, r: 8};
-        const sheetName = 'sheet1';
-        const worksheet = workbook.Sheets[sheetName];
-
-        insert_table(cellRef,worksheet)
-        XLSX.writeFile(workbook, 'modified_template.xlsx');
-    })
-    .catch(error => console.error('Error fetching template:', error));
+    const workbook = XLSX.utils.book_new();
+    const worksheet = XLSX.utils.aoa_to_sheet([]);
+    XLSX.utils.book_append_sheet(workbook, worksheet, 'Sheet1');
+    insert_table({c: 0, r: 0},worksheet)
+    XLSX.writeFile(workbook, 'modified_template.xlsx');
 });
 
 document.getElementById("default-export-word").addEventListener('click',()=>{
