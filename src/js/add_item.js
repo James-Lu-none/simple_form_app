@@ -10,7 +10,7 @@ function addItem() {
     const unitOptions=getUnitOptions();
     const unit = unitOptions.get(unitKey);
     
-    const total = quantity * unitPrice;
+    const total = numberWithCommas(quantity * unitPrice);
     items.push({ item, pattern,quantity, unitPrice, unit, total, description});
     
     updateItemList();
@@ -33,9 +33,17 @@ function addWindowItem() {
     const unitOptions=getUnitOptions();
     const unit = unitOptions.get(unitKey);
 
-    const total =  Math.round(unitPrice * q);
+    const total = numberWithCommas(Math.round(unitPrice * q));
     items.push({ item, pattern,quantity, unitPrice, unit, total, description});
 
     updateItemList();
     updateTotal();
+}
+
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+function numberWithoutCommas(x){
+    return parseInt(x.replace(/,/g, ''),10);
 }

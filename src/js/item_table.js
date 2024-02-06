@@ -21,13 +21,13 @@ function setUnitOptions(element){
 }
 function updateTotal() {
     const totalInput = document.getElementById('total');
-    const total = items.reduce((acc, item) => acc + item.total, 0);
-    totalInput.textContent = `${total.toFixed(2)}`;
+    const total = items.reduce((acc, item) => acc + numberWithoutCommas(item.total), 0);
+    const value = total.toFixed(2)
+    totalInput.textContent = `${numberWithCommas(value)}`;
 }
 
 function getTotal(){
-    const totalInput = document.getElementById('total');
-    return totalInput.textContent
+    return document.getElementById('total').textContent;
 }
 
 function updateItemList() {
