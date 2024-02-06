@@ -56,13 +56,7 @@ document.getElementById("default-export-word").addEventListener('click',()=>{
         });
         // Create a data object with your data
         const data = {
-            products: [
-                {item: "A", pattern:"B", quantity:"123", unitPrice:"1", unit:"1",total:"10",description:"hello"},
-                {item: "A", pattern:"B", quantity:"123", unitPrice:"1", unit:"1",total:"10",description:"hello"},
-                {item: "A", pattern:"B", quantity:"123", unitPrice:"1", unit:"1",total:"10",description:"hello"},
-                {item: "A", pattern:"B", quantity:"123", unitPrice:"1", unit:"1",total:"10",description:"hello"},
-                {item: "A", pattern:"B", quantity:"123", unitPrice:"1", unit:"1",total:"10",description:"hello"},{item: "A", pattern:"B", quantity:"123", unitPrice:"1", unit:"1",total:"10",description:"hello"},{item: "A", pattern:"B", quantity:"123", unitPrice:"1", unit:"1",total:"10",description:"hello"}
-            ],
+            products: items,
             quote_total: getTotal()
             // Add other data as needed
         };

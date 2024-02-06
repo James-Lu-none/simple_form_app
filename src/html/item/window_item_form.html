@@ -2,16 +2,19 @@
 <form id="window_item_form">
     <label for="item">品名</label>
     <input type="text" id="item" required>
-    <br/>
     <label>規格</label>
     <input type="number" id="windowLength" class="small-input" required>
     <label>x</label>
     <input type="number" id="windowWidth" class="small-input" required>
+    <br/>
     <label for="quantity">數量</label>
     <input type="number" id="quantity" class="small-input" required>
     <label for="windowUnit">單位</label>
     <select id="windowUnit" class="one-word-input" required></select>
     <label for="unitPrice">單價</label>
     <input type="number" id="unitPrice" class="small-input" required>
+
+    <label for="windowDescription">備註</label>
+    <input type="text" id="windowDescription" required>
     <button type="button" onclick="addWindowItem()">新增</button>
 </form>

@@ -43,6 +43,7 @@ function updateItemList() {
         const cell3 = row.insertCell(3);
         const cell4 = row.insertCell(4);
         const cell5 = row.insertCell(5);
+        const cell6 = row.insertCell(6);
         
         cell0.textContent = item.item;
         cell1.textContent = item.pattern;
@@ -50,6 +51,7 @@ function updateItemList() {
         cell3.textContent = item.unit;
         cell4.textContent = item.unitPrice;
         cell5.textContent = item.total;
+        cell6.textContent = item.description
     });
 }
 

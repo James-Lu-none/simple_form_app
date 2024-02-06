@@ -2,14 +2,17 @@
 <form id="unknown_item_form">
     <label for="item">品名</label>
     <input type="text" id="u_item" required>
-    <br/>
     <label for="u_pattern">規格</label>
     <input type="text" id="u_pattern" required>
+    <br/>
     <label for="u_quantity">數量</label>
     <input type="number" id="u_quantity" class="small-input" required>
     <label for="u_unit">單位</label>
     <select id="u_unit" class="one-word-input" required></select>
     <label for="u_unitPrice">單價</label>
     <input type="number" id="u_unitPrice" class="small-input" required>
+
+    <label for="u_description">備註</label>
+    <input type="text" id="u_description" required>
     <button type="button" onclick="addItem()">新增</button>
 </form>
