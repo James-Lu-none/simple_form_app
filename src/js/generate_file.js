@@ -63,7 +63,7 @@ document.getElementById("default-export-word").addEventListener('click',()=>{
                 {item: "A", pattern:"B", quantity:"123", unitPrice:"1", unit:"1",total:"10",description:"hello"},
                 {item: "A", pattern:"B", quantity:"123", unitPrice:"1", unit:"1",total:"10",description:"hello"},{item: "A", pattern:"B", quantity:"123", unitPrice:"1", unit:"1",total:"10",description:"hello"},{item: "A", pattern:"B", quantity:"123", unitPrice:"1", unit:"1",total:"10",description:"hello"}
             ],
-            quote_total:"1000000"
+            quote_total: getTotal()
             // Add other data as needed
         };
         // Render the document (replace the placeholders with your data)

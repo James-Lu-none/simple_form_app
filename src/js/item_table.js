@@ -20,10 +20,16 @@ function setUnitOptions(element){
     });
 }
 function updateTotal() {
-const totalInput = document.getElementById('total');
-const total = items.reduce((acc, item) => acc + item.total, 0);
-totalInput.textContent = `$${total.toFixed(2)}`;
+    const totalInput = document.getElementById('total');
+    const total = items.reduce((acc, item) => acc + item.total, 0);
+    totalInput.textContent = `${total.toFixed(2)}`;
 }
+
+function getTotal(){
+    const totalInput = document.getElementById('total');
+    return totalInput.textContent
+}
+
 function updateItemList() {
     const itemList = document.getElementById('itemList')
 
