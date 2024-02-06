@@ -42,6 +42,50 @@ document.getElementById('default-export').addEventListener('click', () => {
     .catch(error => console.error('Error fetching template:', error));
 });
 
+document.getElementById("default-export-word").addEventListener('click',()=>{
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', './src/template.docx', true);
+    xhr.responseType = 'arraybuffer';
+
+    xhr.onload = function () {
+        const content = new Uint8Array(xhr.response);
+        const zip = new PizZip(content);
+        const doc = new docxtemplater(zip,{
+            paragraphLoop: true,
+            linebreaks: true,
+        });
+        // Create a data object with your data
+        const data = {
+            items: [
+                { name: 'Item 1', quantity: 5, price: 10 },
+                { name: 'Item 2', quantity: 3, price: 8 },
+                // Add more items as needed
+            ],
+            // Add other data as needed
+        };
+
+        // Render the document (replace the placeholders with your data)
+        doc.render(data);
+
+        // Save the generated document
+        const output = doc.getZip().generate({ type: 'blob' });
+        const blobUrl = URL.createObjectURL(output);
+
+        // Optionally, you can create a link to download the generated document
+        const blob = doc.getZip().generate({
+            type: "blob",
+            mimeType:
+                "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+            // compression: DEFLATE adds a compression step.
+            // For a 50MB output document, expect 500ms additional CPU time
+            compression: "DEFLATE",
+        });
+        saveAs(blob, "output.docx");
+    };
+
+    xhr.send();
+});
+
 function insert_table(cellRef,worksheet){
     const table = document.getElementById('itemTable');
     const htmlTableWorkbook = XLSX.utils.table_to_book(table);
@@ -72,3 +116,4 @@ function insert_table(cellRef,worksheet){
         });
     });
 }
+
