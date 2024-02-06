@@ -1,6 +1,6 @@
 function initInfoForm() {
-    const handler = document.getElementById('handler').value;
-    handler = "盧建良";
+    const handler = document.getElementById('handler');
+    handler.value = "盧建良";
 }
 function getInfo(){
     const date = document.getElementById('date').value;
