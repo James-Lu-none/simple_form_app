@@ -6,44 +6,7 @@ document.getElementById('default-export').addEventListener('click', () => {
     XLSX.writeFile(workbook, 'output.xlsx');
 });
 
-document.getElementById("default-export-word").addEventListener('click',()=>{
-    const xhr = new XMLHttpRequest();
-    xhr.open('GET', './src/template.docx', true);
-    xhr.responseType = 'arraybuffer';
-
-    xhr.onload = function () {
-        const content = new Uint8Array(xhr.response);
-        const zip = new PizZip(content);
-        const doc = new docxtemplater(zip,{
-            paragraphLoop: true,
-            linebreaks: true,
-        });
-        // Create a data object with your data
-        const data = {
-            products: items,
-            quoteTotal: getTotal(),
-            ...getInfo()
-            // Add other data as needed
-        };
-        // Render the document (replace the placeholders with your data)
-        doc.render(data);
-
-        // Optionally, you can create a link to download the generated document
-        const blob = doc.getZip().generate({
-            type: "blob",
-            mimeType:
-                "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-            // compression: DEFLATE adds a compression step.
-            // For a 50MB output document, expect 500ms additional CPU time
-            compression: "DEFLATE",
-        });
-        saveAs(blob, "output.docx");
-    };
-
-    xhr.send();
-});
-
-function insert_table(cellRef,worksheet){
+function insertTable(cellRef,worksheet){
     const table = document.getElementById('itemTable');
     const htmlTableWorkbook = XLSX.utils.table_to_book(table);
 
@@ -72,5 +35,43 @@ function insert_table(cellRef,worksheet){
             
         });
     });
+}
+
+document.getElementById("default-export-word").addEventListener('click',()=>{
+    const info = getInfo();
+    const fileName = generateFileName();
+    const data = {
+        products: items,
+        quoteTotal: getTotal(),
+        ...info
+    };
+
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', './src/template.docx', true);
+    xhr.responseType = 'arraybuffer';
+
+    xhr.onload = function () {
+        const content = new Uint8Array(xhr.response);
+        const zip = new PizZip(content);
+        const doc = new docxtemplater(zip,{
+            paragraphLoop: true,
+            linebreaks: true,
+        });
+        doc.render(data);
+        const blob = doc.getZip().generate({
+            type: "blob",
+            mimeType:
+                "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+            compression: "DEFLATE",
+        });
+        saveAs(blob, "output.docx");
+    };
+
+    xhr.send();
+});
+
+
+function generateFileName(){
+
 }
 
