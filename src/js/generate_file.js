@@ -1,9 +1,14 @@
 document.getElementById('default-export').addEventListener('click', () => {
+    const info = getInfo();
+    if(!info){
+        return;
+    }
+    const fileName = generateFileName(info);
     const workbook = XLSX.utils.book_new();
     const worksheet = XLSX.utils.aoa_to_sheet([]);
     XLSX.utils.book_append_sheet(workbook, worksheet, 'Sheet1');
     insert_table({c: 0, r: 0},worksheet)
-    XLSX.writeFile(workbook, 'output.xlsx');
+    XLSX.writeFile(workbook, fileName + '.xlsx');
 });
 
 function insertTable(cellRef,worksheet){
@@ -39,7 +44,10 @@ function insertTable(cellRef,worksheet){
 
 document.getElementById("default-export-word").addEventListener('click',()=>{
     const info = getInfo();
-    const fileName = generateFileName();
+    if(!info){
+        return;
+    }
+    const fileName = generateFileName(info);
     const data = {
         products: items,
         quoteTotal: getTotal(),
@@ -64,14 +72,19 @@ document.getElementById("default-export-word").addEventListener('click',()=>{
                 "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
             compression: "DEFLATE",
         });
-        saveAs(blob, "output.docx");
+        saveAs(blob, fileName+".docx");
     };
 
     xhr.send();
 });
 
 
-function generateFileName(){
-
+function generateFileName(info){
+    const infoObj=JSON.parse(JSON.stringify(info));
+    const date = infoObj.date;
+    const customerName = infoObj.customerName;
+    const constructionName = infoObj.constructionName;
+    const constructionLocation = infoObj.constructionLocation;
+    return [date,customerName,constructionName,constructionLocation].join("_");
 }
 
