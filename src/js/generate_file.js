@@ -1,8 +1,5 @@
 document.getElementById('default-export').addEventListener('click', () => {
     const info = getInfo();
-    if(!info){
-        return;
-    }
     const fileName = generateFileName(info);
     const workbook = XLSX.utils.book_new();
     const worksheet = XLSX.utils.aoa_to_sheet([]);
@@ -44,9 +41,6 @@ function insertTable(cellRef,worksheet){
 
 document.getElementById("default-export-word").addEventListener('click',()=>{
     const info = getInfo();
-    if(!info){
-        return;
-    }
     const fileName = generateFileName(info);
     const data = {
         products: items,

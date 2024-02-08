@@ -8,7 +8,9 @@ function getInfo(){
     const constructionName = document.getElementById('constructionName').value;
     const constructionLocation = document.getElementById('constructionLocation').value;
     const handler = document.getElementById('handler').value;
-    if(!date | !customerName | !constructionName | !constructionLocation | !handler) return null;
+    if(!date | !customerName | !constructionName | !constructionLocation | !handler){
+        throw Error("info form not unsatisfied");
+    }
     return {
         date: date,
         customerName: customerName,
