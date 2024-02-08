@@ -3,7 +3,7 @@ function initInfoForm() {
     handler.value = "盧建良";
 }
 function getInfo(){
-    const date = document.getElementById('date').value;
+    const date = getElementByIdWithError('date');
     const customerName = document.getElementById('customerName').value;
     const constructionName = document.getElementById('constructionName').value;
     const constructionLocation = document.getElementById('constructionLocation').value;
@@ -17,5 +17,21 @@ function getInfo(){
         constructionName: constructionName,
         constructionLocation: constructionLocation,
         handler: handler
+    }
+}
+
+function getElementByIdWithError(id){
+    const element = document.getElementById(id);
+    const data = element.value;
+    if(!data){
+        element.style.border = '1px solid red';
+        element.addEventListener('click', function resetBorderColor() {
+            element.style.border = '1px solid black';
+            element.removeEventListener('click', resetBorderColor);
+          }, { once: true });
+        throw Error(id + 'field not filled');
+    }
+    else{
+        return data;
     }
 }
