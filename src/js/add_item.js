@@ -1,9 +1,9 @@
 function addItem() {
-    const item = document.getElementById('u_item').value;
-    const pattern = document.getElementById('u_pattern').value;
-    const quantity = document.getElementById('u_quantity').value;
-    const unitPrice = document.getElementById('u_unitPrice').value;
-    const unitKey = document.getElementById('u_unit').value;
+    const item = getElementByIdWithError('u_item');
+    const pattern = getElementByIdWithError('u_pattern');
+    const quantity = getElementByIdWithError('u_quantity');
+    const unitPrice = getElementByIdWithError('u_unitPrice');
+    const unitKey = getElementByIdWithError('u_unit');
     if(!item | !quantity | !unitPrice) return;
 
     const description = document.getElementById('u_description').value;
@@ -18,11 +18,11 @@ function addItem() {
 }
 
 function addWindowItem() {
-    const item = document.getElementById('item').value;
-    const windowLength = document.getElementById("windowLength").value;
-    const windowWidth = document.getElementById("windowWidth").value;
-    const quantity = document.getElementById('quantity').value;
-    const unitPrice = document.getElementById('unitPrice').value;
+    const item = getElementByIdWithError('item');
+    const windowLength = getElementByIdWithError("windowLength");
+    const windowWidth = getElementByIdWithError("windowWidth");
+    const quantity = getElementByIdWithError('quantity');
+    const unitPrice = getElementByIdWithError('unitPrice');
     if(!item | !windowLength | !windowWidth | !quantity | !unitPrice) return;
     
     const description = document.getElementById('windowDescription').value;
